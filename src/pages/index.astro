@@ -1,5 +1,7 @@
 ---
-
+import '../styles/default.css'
+import '../styles/landing.css'
+import Footer from '../components/footer.astro'
 ---
 
 <html lang="en">
@@ -8,9 +10,19 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>bazzz.net</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>baz dot net</h1>
+
+		<subtitle>Doer of things</subtitle>
+		
+		<b1>I have some real insightful content to add here some day.</b1>
+
+		<div class="button.group">
+			<button onclick="window.location.href='/blog'">blog</button>
+		</div>
+
+		<Footer />
 	</body>
 </html>

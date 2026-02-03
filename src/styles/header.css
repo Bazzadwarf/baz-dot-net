@@ -1,0 +1,42 @@
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+a {
+    background: linear-gradient(to right, var(--color-text-left-gradient) 0%, var(--color-text-right-gradient) 100%);
+    background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    cursor: pointer;
+
+    font-size: 5em;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+}
+
+.button-group {
+    display: flex;
+    gap: 1em;
+    margin-top: 2em;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.25em;
+    cursor: pointer;
+    padding: 1em 0.5em;
+
+    text-decoration-style: solid;
+    text-decoration-color: var(--color-text);
+    text-decoration-line: underline;
+}
+
+button:hover {
+    color: var(--color-text-right-gradient);
+}

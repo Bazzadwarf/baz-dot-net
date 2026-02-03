@@ -1,0 +1,67 @@
+table {
+    max-width: 727px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.header-row {
+    padding: 0%;
+}
+
+.title {
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    
+    flex: 0.8;
+}
+
+.title a {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #8cb48c;
+}
+
+.title a:hover {
+    color: #77A677;
+}
+
+.title a:visited {
+    color: #8cb48c;
+}
+
+.title a:active {
+    color: #77A677;
+}
+
+.date {
+    font-size: 1.25em;
+    color: #888888;
+    
+    text-align: right;
+    
+    flex: 0.2;
+}
+
+.description {
+    font-size: 1.25em;
+    color: #bbbbbb;
+    
+    text-align:justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    padding: 0%;
+}
+
+table {
+    border: 0px transparent;
+}
+
+th,
+td {
+  border: 0px transparent;
+  text-align: left;
+}

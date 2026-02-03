@@ -1,0 +1,41 @@
+---
+import '../styles/default.css'
+import '../styles/blog.css'
+
+import Header from '../components/header.astro'
+import Footer from '../components/footer.astro'
+
+const posts = import.meta.glob('../pages/posts/*.md', { eager: true });
+const postList = Object.entries(posts).map(([path, post]) => {
+  const filename = path.split('/').pop().replace('.md', '');
+  return { ...post, filename };
+});
+const sortedPosts = postList.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>bazzz.net</title>
+	</head>
+	<body>
+        <Header />
+		<table>
+            {sortedPosts.map(post => (
+                <>
+                    <tr class="header-row">
+                        <td class="title"> <a href={`/posts/${post.filename}`}>{post.frontmatter.title}</a></td>
+                        <td class="date">{post.frontmatter.date}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="description">{post.frontmatter.description}</td>
+                    </tr>
+                </>
+            ))}
+		</table>
+		<Footer />
+	</body>
+</html>

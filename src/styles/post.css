@@ -1,0 +1,198 @@
+/* Markdown Post Styling Template */
+body {
+    max-width: 727px;
+    margin: auto;
+}
+
+/* Headings */
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+    border-bottom: 1px solid #8cb48c;
+    padding-bottom: 0.25em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1.25em;
+}
+
+p {
+    font-size: 1.25em;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+a:link {
+    font-size: 1.25em;
+    font-weight: normal;
+}
+
+/* Links */
+a:hover {
+    color: #77A677;
+}
+
+a:visited {
+    color: #8cb48c;
+}
+
+a:active {
+    color: #77A677;
+}
+
+/* Ensure links inside post content use normal size (override header rule) */
+.post-content a,
+.post-content a:visited,
+.post-content a:active,
+.post-content a:hover {
+    font-size: 1rem;
+    font-weight: inherit;
+}
+
+/* Lists */
+ul,
+ol {
+    list-style-position: inside;
+    text-align: left;
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+ul li {
+    list-style-type: disc;
+}
+
+ol li {
+    list-style-type: decimal;
+}
+
+ul ul,
+ol ul {
+    list-style-type: circle;
+}
+
+ul ol,
+ol ol {
+    list-style-type: lower-alpha;
+}
+
+/* Code blocks */
+pre {
+    background-color: transparent;
+    border-radius: 4px;
+    padding: 1em;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+code {
+    font-family: 'Consolas', monospace;
+    font-size: 1em;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.9em;
+}
+
+/* Inline code */
+p code,
+li code {
+    background-color: #24292e;
+    color: #f6f8fa;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid #8cb48c;
+    padding-left: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    color: #aaa;
+    font-style: italic;
+    margin: 1em 0;
+}
+
+pre {
+    text-align: left;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1.5em 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Horizontal rules */
+hr {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 2em 0;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    max-width: 727px;
+    width: 100%;
+    margin: 1em 0;
+    border: 1px solid #77A677;
+}
+
+th,
+td {
+    border: 1px dotted #77A677;
+    padding: 0.75em;
+    text-align: left;
+}
+
+th {
+    background-color: transparent;
+}
+
+tr:nth-child(even) {
+    background-color: transparent;
+}
+
+/* Strong and emphasis */
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Strikethrough */
+del {
+    text-decoration: line-through;
+    color: #8cb48c;
+}
