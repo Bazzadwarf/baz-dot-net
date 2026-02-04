@@ -2,12 +2,14 @@
 import '../styles/default.css'
 import '../styles/post.css'
 
+import Defaultlayout from './defaultlayout.astro'
+
 import Header from '../components/header.astro'
-import Footer from '../components/footer.astro'
+
+const { frontmatter } = Astro.props;
 ---
 
-<article>
+<Defaultlayout title={frontmatter.title}>
     <Header />
-    <slot />
-    <Footer />
-</article>
+        <slot />
+</Defaultlayout>

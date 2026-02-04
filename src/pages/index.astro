@@ -1,17 +1,10 @@
 ---
 import '../styles/default.css'
 import '../styles/landing.css'
-import Footer from '../components/footer.astro'
----
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>bazzz.net</title>
-	</head>
+import PageLayout from '../layouts/defaultlayout.astro'
+---
+<PageLayout>
 	<body>
 		<h1>baz dot net</h1>
 
@@ -22,7 +15,5 @@ import Footer from '../components/footer.astro'
 		<div class="button.group">
 			<button onclick="window.location.href='/blog'">blog</button>
 		</div>
-
-		<Footer />
 	</body>
-</html>
+</PageLayout>
