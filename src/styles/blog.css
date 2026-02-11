@@ -13,7 +13,8 @@ table {
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
-    
+    padding-left: 0%;
+    padding-right: 0%;
     flex: 0.8;
 }
 
@@ -38,8 +39,10 @@ table {
 .date {
     font-size: 1.25em;
     color: #888888;
-    
     text-align: right;
+
+    padding-left: 0%;
+    padding-right: 0%;
     
     flex: 0.2;
 }
