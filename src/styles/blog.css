@@ -2,6 +2,8 @@ table {
     max-width: 727px;
     width: 100%;
     border-collapse: collapse;
+    border-spacing: 0;
+    border: 0;
 }
 
 .header-row {
@@ -57,10 +59,6 @@ table {
     word-break: break-word;
 
     padding: 0%;
-}
-
-table {
-    border: 0;
 }
 
 th,
