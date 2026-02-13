@@ -41,20 +41,24 @@
 }
 
 .post-content a:link {
-    font-size: 1em;
+    color: #77A677;
+    font-size: inherit;
 }
 
 /* Links */
 .post-content a:hover {
     color: #77A677;
+    font-size: inherit;
 }
 
 .post-content a:visited {
     color: #8cb48c;
+    font-size: inherit;
 }
 
 .post-content a:active {
     color: #77A677;
+    font-size: inherit;
 }
 
 /* Ensure links inside post content use normal size (override header rule) */
@@ -157,8 +161,6 @@
     border-top: 2px solid #77A677;
     max-width: 100%;
     width: 100%;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
 }
 
 /* Tables */
