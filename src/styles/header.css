@@ -1,4 +1,8 @@
 
+header {
+    padding: 1rem;
+}
+
 body {
     background-color: var(--color-background);
     color: var(--color-text);
