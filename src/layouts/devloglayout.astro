@@ -1,0 +1,44 @@
+---
+import '../styles/default.css'
+import '../styles/post.css'
+
+import Defaultlayout from './defaultlayout.astro'
+
+import Header from '../components/header.astro'
+
+const { frontmatter } = Astro.props;
+const posts = import.meta.glob('../pages/devlog/*.md', { eager: true });
+const postList = Object.entries(posts).map(([path, post]) => {
+  const filename = path.split('/').pop().replace('.md', '');
+  return { ...post, filename };
+});
+const sortedPosts = postList.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+const currentIndex = sortedPosts.findIndex(post => post.filename == frontmatter.date);
+const prevPost = sortedPosts[currentIndex - 1] || null;
+const nextPost = sortedPosts[currentIndex + 1] || null;
+const currentPost = sortedPosts[currentIndex] || null;
+---
+
+<Defaultlayout title={frontmatter.title}>
+    <Header />
+    <div class="post-content">
+        <slot />
+    </div>
+    <div class="button-group">
+        {prevPost && (
+            <button onclick={`window.location.href="/devlog/${prevPost.filename}"`}>
+                {prevPost.frontmatter.title}
+            </button>
+            <div class="arrow-link">←</div>
+        )}
+        {prevPost || nextPost ? (
+            <div class="arrow-link">{currentPost.frontmatter.title}</div>
+        ) : null}
+        {nextPost && (
+            <div class="arrow-link">→</div>
+            <button onclick={`window.location.href="/devlog/${nextPost.filename}"`}>
+                {nextPost.frontmatter.title}
+            </button>
+        )}
+    </div>
+</Defaultlayout>

@@ -1,0 +1,33 @@
+---
+import '../styles/default.css'
+import '../styles/blog.css'
+
+import Defaultlayout from '../layouts/defaultlayout.astro'
+
+import Header from '../components/header.astro'
+import Footer from '../components/footer.astro'
+
+const posts = import.meta.glob('../pages/devlog/*.md', { eager: true });
+const postList = Object.entries(posts).map(([path, post]) => {
+  const filename = path.split('/').pop().replace('.md', '');
+  return { ...post, filename };
+});
+const sortedPosts = postList.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+
+<Defaultlayout title="Devlog">
+    <Header />
+    <table>
+        {sortedPosts.map(post => (
+            <>
+                <tr class="header-row">
+                    <td class="title"> <a href={`/devlog/${post.filename}`}>{post.frontmatter.title}</a></td>
+                    <td class="date">{post.frontmatter.date}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="description">{post.frontmatter.description}</td>
+                </tr>
+            </>
+        ))}
+    </table>
+</Defaultlayout>
