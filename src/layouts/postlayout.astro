@@ -30,13 +30,13 @@ console.log(posts);
             <button onclick={`window.location.href="/posts/${prevPost.filename}"`}>
                 {prevPost.frontmatter.title}
             </button>
-            <div class="arrow-link">←</div>
+            <div class="arrow-link">&lt-</div>
         )}
         {prevPost || nextPost ? (
             <div class="arrow-link">{currentPost.frontmatter.title}</div>
         ) : null}
         {nextPost && (
-            <div class="arrow-link">→</div>
+            <div class="arrow-link">-&gt</div>
             <button onclick={`window.location.href="/posts/${nextPost.filename}"`}>
                 {nextPost.frontmatter.title}
             </button>
