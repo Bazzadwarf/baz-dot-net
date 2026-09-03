@@ -12,17 +12,20 @@ if (!frontmatter) {
   throw new Error('devloglayout requires frontmatter in page frontmatter');
 }
 
-const posts = import.meta.glob('../pages/devlog/*.md', { eager: true });
+const posts = import.meta.glob('../content/devlog/*.md', { eager: true });
+
 const postList = Object.entries(posts).map(([path, post]) => {
   const filename = path.split('/').pop().replace('.md', '');
   return { ...post, filename };
 });
 
 const sortedPosts = postList
-    .filter(post => post.frontmatter?.draft !== true)
-    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
-    console.log(sortedPosts);
-const currentIndex = sortedPosts.findIndex(post => post.filename == frontmatter.date);
+  .filter(post => post.frontmatter?.draft !== true)
+  .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+
+const currentIndex = sortedPosts.findIndex(
+  post => post.filename === frontmatter.filename
+);
 const prevPost = sortedPosts[currentIndex - 1] || null;
 const nextPost = sortedPosts[currentIndex + 1] || null;
 const currentPost = sortedPosts[currentIndex];

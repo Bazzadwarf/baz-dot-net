@@ -3,7 +3,6 @@ import '../styles/default.css'
 import '../styles/post.css'
 
 import Defaultlayout from './defaultlayout.astro'
-
 import Header from '../components/header.astro'
 
 const { frontmatter } = Astro.props;
@@ -13,19 +12,23 @@ if (!frontmatter) {
   throw new Error('postlayout requires frontmatter in page frontmatter');
 }
 
-const posts = import.meta.glob('../pages/posts/*.md', { eager: true });
+const posts = import.meta.glob('../content/posts/*.md', { eager: true });
+
 const postList = Object.entries(posts).map(([path, post]) => {
   const filename = path.split('/').pop().replace('.md', '');
   return { ...post, filename };
 });
+
 const sortedPosts = postList
-    .filter(post => post.frontmatter?.draft !== true)
-    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
-const currentIndex = sortedPosts.findIndex(post => post.filename == frontmatter.filename);
+  .filter(post => post.frontmatter?.draft !== true)
+  .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+
+const currentIndex = sortedPosts.findIndex(
+  post => post.filename === frontmatter.filename
+);
 const prevPost = sortedPosts[currentIndex - 1] || null;
 const nextPost = sortedPosts[currentIndex + 1] || null;
-const currentPost = sortedPosts[currentIndex] || null;
-
+const currentPost = sortedPosts[currentIndex];
 ---
 
 <Defaultlayout title={frontmatter.title}>
@@ -40,7 +43,7 @@ const currentPost = sortedPosts[currentIndex] || null;
             </button>
             <div class="arrow-link">&lt-</div>
         )}
-        {prevPost || nextPost ? (
+        {(prevPost || nextPost) && currentPost ? (
             <div class="arrow-link">{currentPost.frontmatter.title}</div>
         ) : null}
         {nextPost && (

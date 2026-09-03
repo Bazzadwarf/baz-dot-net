@@ -1,0 +1,39 @@
+---
+import Devloglayout from '../../layouts/devloglayout.astro';
+
+export function getStaticPaths() {
+    const posts = import.meta.glob('../../content/devlog/*.md', { eager: true });
+
+  return Object.entries(posts)
+    .filter(([, post]) => post.frontmatter?.draft !== true)
+    .map(([path, post]) => {
+      const slug = path.split('/').pop().replace('.md', '');
+
+      return {
+        params: { slug },
+        props: {
+          post,
+          frontmatter: {
+            ...post.frontmatter,
+            filename: slug
+          }
+        }
+      };
+    });
+}
+
+const posts = import.meta.glob('../../content/devlog/*.md', { eager: true });
+const { slug } = Astro.params;
+const post = posts[`../../content/devlog/${slug}.md`];
+
+const frontmatter = {
+  ...post.frontmatter,
+  filename: slug
+};
+
+const Content = post.default;
+---
+
+<Devloglayout frontmatter={frontmatter}>
+  <Content />
+</Devloglayout>

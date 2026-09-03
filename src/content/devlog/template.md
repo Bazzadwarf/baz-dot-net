@@ -1,7 +1,6 @@
 ---
-layout: '../../layouts/devloglayout.astro'
 title: "lorem ipsum dolor sit amet"
-date: "2026-01-01"
+date: "devlog-template"
 description: "lorem ipsum dolor sit amet consectetur adipiscing elit officia dolore"
 draft: true
 ---

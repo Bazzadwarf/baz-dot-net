@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/postlayout.astro'
 title: "TODO: Why does Most Wanted 2012 exist?"
 date: "2026-08-23"
 description: "A game I cannot stop thinking about."
