@@ -3,10 +3,15 @@ import '../styles/default.css'
 import '../styles/post.css'
 
 import Defaultlayout from './defaultlayout.astro'
-
 import Header from '../components/header.astro'
 
 const { frontmatter } = Astro.props;
+
+// Guard against missing frontmatter
+if (!frontmatter) {
+  throw new Error('devloglayout requires frontmatter in page frontmatter');
+}
+
 const posts = import.meta.glob('../pages/devlog/*.md', { eager: true });
 const postList = Object.entries(posts).map(([path, post]) => {
   const filename = path.split('/').pop().replace('.md', '');
@@ -16,6 +21,7 @@ const postList = Object.entries(posts).map(([path, post]) => {
 const sortedPosts = postList
     .filter(post => post.frontmatter.draft == false)
     .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+    console.log(sortedPosts);
 const currentIndex = sortedPosts.findIndex(post => post.filename == frontmatter.date);
 const prevPost = sortedPosts[currentIndex - 1] || null;
 const nextPost = sortedPosts[currentIndex + 1] || null;
@@ -34,7 +40,7 @@ const currentPost = sortedPosts[currentIndex];
             </button>
             <div class="arrow-link">&lt-</div>
         )}
-        {(prevPost || nextPost) ? (
+        {(prevPost || nextPost) && currentPost ? (
             <div class="arrow-link">{currentPost.frontmatter.title}</div>
         ) : null}
         {nextPost && (
