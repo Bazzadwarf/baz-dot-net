@@ -4,6 +4,7 @@ title: "Make things for your friends"
 date: "2026-02-10"
 description: "Finding joy in seeing your creations being used by the people you know."
 filename: "make-things-for-your-friends"
+draft: false
 ---
 
 # Make Things For Your Friends

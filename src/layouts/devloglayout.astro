@@ -12,11 +12,14 @@ const postList = Object.entries(posts).map(([path, post]) => {
   const filename = path.split('/').pop().replace('.md', '');
   return { ...post, filename };
 });
-const sortedPosts = postList.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+
+const sortedPosts = postList
+    .filter(post => post.frontmatter.draft == false)
+    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 const currentIndex = sortedPosts.findIndex(post => post.filename == frontmatter.date);
 const prevPost = sortedPosts[currentIndex - 1] || null;
 const nextPost = sortedPosts[currentIndex + 1] || null;
-const currentPost = sortedPosts[currentIndex] || null;
+const currentPost = sortedPosts[currentIndex];
 ---
 
 <Defaultlayout title={frontmatter.title}>
@@ -31,7 +34,7 @@ const currentPost = sortedPosts[currentIndex] || null;
             </button>
             <div class="arrow-link">&lt-</div>
         )}
-        {prevPost || nextPost ? (
+        {(prevPost || nextPost) ? (
             <div class="arrow-link">{currentPost.frontmatter.title}</div>
         ) : null}
         {nextPost && (

@@ -12,7 +12,9 @@ const postList = Object.entries(posts).map(([path, post]) => {
   const filename = path.split('/').pop().replace('.md', '');
   return { ...post, filename };
 });
-const sortedPosts = postList.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+const sortedPosts = postList
+    .filter(post => post.frontmatter.draft == false)
+    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 ---
 
 <Defaultlayout title="Devlog">
