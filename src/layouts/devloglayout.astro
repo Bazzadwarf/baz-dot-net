@@ -19,7 +19,7 @@ const postList = Object.entries(posts).map(([path, post]) => {
 });
 
 const sortedPosts = postList
-    .filter(post => post.frontmatter.draft == false)
+    .filter(post => post.frontmatter?.draft !== true)
     .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
     console.log(sortedPosts);
 const currentIndex = sortedPosts.findIndex(post => post.filename == frontmatter.date);
